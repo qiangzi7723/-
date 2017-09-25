@@ -1,0 +1,569 @@
+@import './common';
+$minW:1200px;
+$mainC:#00b38a;
+body {
+    font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial, "Helvetica Neue", Helvetica;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    cursor: pointer;
+    color: #555;
+    &:hover {
+        color: $mainC;
+    }
+}
+
+::selection {
+    color: #fff;
+    background-color: $mainC;
+}
+
+.header {
+    min-width: $minW;
+    &__top-bar {
+        display: flex;
+        justify-content: space-between;
+        height: 30px;
+        line-height: 30px;
+        background-color: #333;
+        a {
+            padding: 0 12px;
+            text-decoration: none;
+            color: #c4c3c3;
+            &:hover {
+                color: #fff;
+            }
+        }
+        .header__app {
+            @include bg-size();
+            background-image: url('https://static.lagou.com/www/static/common/widgets/header_c/modules/img/app_icon@2x_3fedc8d.png');
+            background-position: 12px center;
+            padding: 0 12px 0 27px;
+            color: #08d7a2;
+            &:hover {
+                color: #05eaaf;
+            }
+        }
+    }
+    &__top-nav {
+        display: flex;
+        min-width: $minW;
+        height: 54px;
+        border-top: 1px solid #d2d2d2;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    &__nav--left {
+        display: flex;
+        height: 100%;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    &__logo {
+        width: 100px;
+        background-image: url('https://static.lagou.com/www/static/common/widgets/header_c/modules/img/logo@2x_520eb33.png');
+        @include bg-size();
+    }
+    &__city {
+        margin-left: 12px;
+        margin-top: 12px;
+        height: 44px;
+        line-height: 44px;
+        span:nth-of-type(1) {
+            font-size: 18px;
+        }
+        span:nth-of-type(2) {
+            color: #999;
+            font-size: 12px;
+        }
+    }
+    &__nav {
+        &__ul {
+            display: flex;
+            list-style: none;
+            height: 100%;
+            line-height: 54px;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            list-style: none;
+            font-size: 18px;
+            margin: 0 16px;
+            padding: 0 5px;
+            color: #999;
+            cursor: pointer;
+            &:hover {
+                color: #333;
+                border-bottom: 2px solid $mainC;
+            }
+        }
+        .high-light {
+            color: #333;
+            border-bottom: 2px solid $mainC;
+        }
+    }
+}
+
+.r-line {
+    border-right: 1px solid #5d5d5d;
+}
+
+.search {
+    min-width: $minW;
+    padding: 30px 0 28px;
+    background-color: #F2F5F4;
+    &__inner {
+        width: 73%;
+        margin: 0 auto;
+    }
+    &__form {
+        display: flex;
+        justify-content: center;
+    }
+    input[type='text'] {
+        width: 85%;
+        height: 20px;
+        padding: 12px 16px;
+        font-size: 16px;
+        outline: none;
+        border: 1px solid #E8E8E8;
+        border-right: 0;
+        &:focus {
+            outline: none;
+            border: 1px solid $mainC;
+            border-right: 0;
+        }
+    }
+    input[type='submit'] {
+        font-size: 18px;
+        width: 15%;
+        color: #fff;
+        background-color: $mainC;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        &:hover {
+            background-color: #00a57f;
+        }
+    }
+    &__hot {
+        margin-top: 10px;
+        span {
+            color: #777;
+        }
+        a {
+            text-decoration: none;
+            color: $mainC;
+            margin: 0 8px;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.content {
+    width: $minW;
+    margin: 0 auto;
+    padding-bottom: 91px;
+}
+
+.job-nav {
+    width: $minW;
+    margin: 26px auto 0;
+    display: flex;
+    &__ul {
+        width: 321px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        margin-left: -15px;
+        li {
+            list-style: none;
+            position: relative;
+        }
+    }
+    &__hot {
+        position: relative;
+        padding: 18px 0px 18px 15px;
+        span {
+            font-size: 18px;
+        }
+        a {
+            font-size: 14px;
+            color: #555;
+            padding: 0 5px;
+            margin-right: 8px;
+            text-decoration: none;
+            &:hover {
+                color: $mainC;
+                text-decoration: underline;
+            }
+        }
+        &:hover {
+            box-shadow: 0 0 4px 2px rgba(0, 0, 0, .09);
+            &+.job-nav__detail {
+                display: block;
+            }
+        }
+        .arrow {
+            display: block;
+            width: 6px;
+            height: 11px;
+            background-image: url('https://static.lagou.com/www/static/index/modules/sidebar/img/arrow@2x_cb107b6.png');
+            @include bg-size();
+            position: absolute;
+            top: 25px;
+            right: 10px;
+        }
+    }
+    &__detail {
+        display: none;
+        position: absolute;
+        left: 321px;
+        top: 0;
+        width: 600px;
+        background-color: #fff;
+        padding: 20px 10px 0 12px;
+        box-shadow: 0 0 4px 2px rgba(0, 0, 0, .09);
+        z-index: 10;
+        dl {
+            margin: 0 0 17px;
+            overflow: hidden;
+        }
+        dt {
+            margin: 0 0 6px 12px;
+        }
+        dd {
+            margin: 0;
+        }
+        a {
+            padding: 0 11px;
+            color: #555;
+            text-decoration: none;
+            border-left: 1px solid #ccc;
+            line-height: 28px;
+            margin-left: -1px;
+            &:hover {
+                color: $mainC;
+                text-decoration: underline;
+            }
+        }
+        &:before {
+            content: "";
+            width: 7px;
+            height: 55px;
+            background-color: #fff;
+            z-index: 100;
+            position: absolute;
+            top: 0;
+            left: -5px;
+        }
+        &:hover {
+            display: block;
+        }
+    }
+    figure {
+        margin-top: 20px;
+        margin-left: 40px;
+    }
+}
+
+.common-header {
+    margin-top: 52px;
+    &__ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid #E8E8E8;
+    }
+    h3 {
+        padding: 10px 0;
+        color: #999;
+        font-size: 16px;
+        font-weight: normal;
+        margin: 0;
+        margin-right: 50px;
+        cursor: pointer;
+    }
+    .common-header__li--active {
+        color: #333;
+        border-bottom: 2px solid #333;
+    }
+}
+
+.hot-job {
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            box-sizing: border-box;
+            width: 390px;
+            height: 200px;
+            margin-top: 16px;
+            padding: 20px 18px 0;
+            border: 1px solid #EAEEED;
+            flex: 0 0 auto;
+            font-size: 14px;
+            color: #999;
+            &:hover {
+                box-shadow: 0 0 10px 0 rgba(56, 81, 76, .12);
+            }
+            .list__header {
+                display: flex;
+                justify-content: space-between;
+                margin: 0;
+                font-weight: normal;
+            }
+            .list__name {
+                font-size: 16px;
+            }
+            .list__chat {
+                display: inline-block;
+                @include bg-size();
+                background-image: url('https://static.lagou.com/www/static/index/modules/job_list/img/icon_chat2@2x_44822be.png');
+                width: 16px;
+                height: 16px;
+                position: relative;
+                top: 3px;
+                cursor: pointer;
+                &:hover{
+                    .list__wrap{
+                        display: block;
+                    }
+                }
+                .list__wrap{
+                    display: none;
+                    position: absolute;
+                    top: -30px;
+                    left: 40px;
+                    border:1px solid #dce4e6;
+                    box-shadow: 1px 1px 2px #f2f2f2;
+                    border-radius: 3px;
+                    i{
+                        position: absolute;
+                        left: -8px;
+                        top: 30px;
+                        width: 14px;
+                        height: 14px;
+                        border-left: 1px solid #dce4e6;
+                        border-top: 1px solid #dce4e6;
+                        transform: rotate(-45deg);
+                        background-color: #fff;
+                    }
+                }
+                .list__content{
+                    display: flex;
+                    padding: 16px;
+                    background-color: #fff;
+                }
+                &--left {
+                    .list__chat--top{
+                        display:flex;
+                        margin-bottom: 10px;
+                        img{
+                            margin-right: 14px;
+                        }
+                        .list__hr--name{
+                            height: 30px;
+                            line-height: 30px;
+                            font-size: 18px;
+                            color: #333;
+                        }
+                        .list__hr--position{
+                            height: 24px;
+                            line-height: 24px;
+                            font-size: 14px;
+                            color: #666;
+                        }
+                    }
+                    .list__chat--bottom{
+                        color: #333;
+                        line-height: 22px;
+                    }
+                }
+                &--right {
+                    margin-left: 10px;
+                    margin-top: 10px;
+                    flex: 0 0 116px;
+                    width: 116px;
+                    height: 116px;
+                    @include bg-size();
+                    background-image: url('https://qr.api.cli.im/qr?data=1&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=de32a4c489f3b70d8e9cc43ca476e2c8');
+                }
+            }
+            .list__price {
+                font-size: 16px;
+                color: #fa6041;
+            }
+            .list__requirement {
+                height: 30px;
+                line-height: 30px;
+                color: #777;
+            }
+            .list__category {
+                display: flex;
+                margin-top: 5px;
+                span {
+                    width: 60px;
+                    height: 26px;
+                    line-height: 26px;
+                    text-align: center;
+                    font-size: 12px;
+                    padding: 0 5px;
+                    margin-right: 6px;
+                    border: 1px solid #F0F0F0;
+                    border-radius: 3px;
+                    color: #999;
+                }
+            }
+            .list__company {
+                display: flex;
+                margin-top: 18px;
+                padding-top: 18px;
+                border-top: 1px dashed #E0E0E0;
+            }
+            .list__company__img {
+                margin: 0;
+                margin-right: 14px;
+            }
+            .list__company__name,
+            .list__company__info {
+                height: 20px;
+                line-height: 20px;
+            }
+        }
+        .list__button {
+            box-sizing: border-box;
+            width: 390px;
+            height: 42px;
+            line-height: 42px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid #00B38A;
+            color: $mainC;
+            cursor: pointer;
+            margin-top: 30px;
+            &:hover {
+                background-color: #00B38A;
+                color: #fff;
+            }
+        }
+    }
+}
+
+.friendy-link {
+    position: relative;
+    &__list {
+        width: 1120px;
+        height: 30px;
+        overflow: hidden;
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        a {
+            padding: 8px 30px 8px 0;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    &__button {
+        color: #999;
+        cursor: pointer;
+        position: absolute;
+        top: 78px;
+        right: 0;
+        &:hover {
+            &+.friendy-link__list {
+                color: red;
+                height: auto;
+            }
+        }
+    }
+}
+
+.footer {
+    min-width: $minW;
+    padding-top: 10px;
+    border-top: 1px solid #ebebeb;
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    &__inner {
+        width: 1024px;
+        margin: 0 auto;
+    }
+    &__content {
+        display: flex;
+        a {
+            text-decoration: none;
+            color: #555;
+            margin-right: 10px;
+            height: 20px;
+            line-height: 20px;
+            &:hover {
+                color: #333;
+            }
+        }
+        span {
+            color: #555;
+            height: 20px;
+            line-height: 20px;
+        }
+    }
+    &__logo {
+        width: 198px;
+        height: 19px;
+        margin-right: 20px;
+        @include bg-size();
+        background-image: url('https://static.lagou.com/www/static/common/widgets/footer_c/modules/img/footer_lagou_icon@2x_19e8994.png');
+    }
+    &__app {
+        position: relative;
+        img {
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 10;
+            top: -160px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .1);
+            transition: opacity .5s;
+        }
+        &:hover {
+            img {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+    &__new {
+        width: 30px;
+        height: 16px;
+        display: inline-block;
+        @include bg-size();
+        background-image: url('https://static.lagou.com/www/static/common/widgets/footer_c/modules/img/app-download/new_v1@2x_02d0bdc.png');
+        position: relative;
+        top: 2px;
+        margin-left: 1px;
+    }
+    &__copyright {
+        font-size: 12px;
+        height: 12px;
+        line-height: 12px;
+        color: #d5d5d5;
+        text-align: center;
+        padding: 14px 0;
+    }
+}
